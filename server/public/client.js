@@ -1,34 +1,20 @@
 $(document).ready(onReady);
+let operatorButton = "";
+
 
 function onReady() {
 
 
-    $('#plus').on('click', plusBtnListener);
-    $('#minus').on('click', minusBtnListener);
-    $('#times').on('click', timesBtnListener);
-    $('#divide').on('click', divideBtnListener);
+    $('.operator').on('click', operatorBtnListener);
     $('#equals').on('click', equalsBtnListener);
     $('#C').on('click', cBtnListener);
 }
 
-function plusBtnListener(){
- console.log('hello from plus button:', plusBtnListener);
-
-}
-
-function minusBtnListener(){
-    console.log('hello from minus button:', minusBtnListener);
-   
-}
-
-function timesBtnListener(){
-    console.log('hello from times button:', timesBtnListener);
-   
-}
-
-function divideBtnListener(){
-    console.log('hello from divide button:', divideBtnListener);
-   
+function operatorBtnListener(){
+ console.log('hello from operator button:', operatorBtnListener);
+ operatorButton = $(this).data('value');
+ console.log('operator button:', operatorButton);
+ 
 }
 
 function equalsBtnListener(){
@@ -41,25 +27,22 @@ function cBtnListener(){
    
 }
 
-function postPlayerData() { 
-    let firstName = $('#firstName').val();
-    let lastName = $('#lastName').val();
-    let born = $('#born').val();
+function postNewCalcData() { 
+    let firstNumber = $('#firstNumber').val();
+    let secondNumber = $('#secondNumber').val();
     $.ajax({
         type: 'POST',
-        url: '/players',
+        url: '/calculations',
         data:{ 
-            firstName: firstName, 
-            lastName: lastName,
-            born: born
+            firstNumber: firstNumber, 
+            secondNumber: secondNumber,
+            operator: operatorButton,
         }
     }).then(function (response) {
         console.log('respnse', response);
-        getPlayerData();
-        getTournamentData();
-        $('#firstName').val('');
-        $('#lastName').val('');
-        $('#born').val('');
+        getNewCalcData();
+        $('#firstNumber').val('');
+        $('#secondNumber').val('');
     }).catch(function(error){
         alert(error);
     });

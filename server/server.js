@@ -5,12 +5,35 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 5000;
 
+// const newCalcData[
+// {
+//  firstNumber: firstNumber,
+// };
+// {
+//  plus: plus,
+// };
+// {
+//  minus: minus,
+// };
+// {
+//  times: times,
+// };
+// {
+//  divide: divide,
+// };
+// {
+//  secondNumber: secondNumber,
+// };
+// {
+//  equals: equals,
+// };
+
+// ]
 
 
-
-app.post('/players', (req, res) =>{ 
+app.post('/calculations', (req, res) =>{ 
     console.log('hello from post', req.body);
-    tennisPlayersArray.push(req.body);
+    newCalcData.push(req.body);
 });
 
 app.use(express.static('server/public'));
