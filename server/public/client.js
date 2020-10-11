@@ -41,3 +41,26 @@ function cBtnListener(){
    
 }
 
+function postPlayerData() { 
+    let firstName = $('#firstName').val();
+    let lastName = $('#lastName').val();
+    let born = $('#born').val();
+    $.ajax({
+        type: 'POST',
+        url: '/players',
+        data:{ 
+            firstName: firstName, 
+            lastName: lastName,
+            born: born
+        }
+    }).then(function (response) {
+        console.log('respnse', response);
+        getPlayerData();
+        getTournamentData();
+        $('#firstName').val('');
+        $('#lastName').val('');
+        $('#born').val('');
+    }).catch(function(error){
+        alert(error);
+    });
+}
