@@ -9,17 +9,26 @@ app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 let newCalcData=[
-//{
-//  firstNumber: firstNumber,
-// },
-// {
-//  secondNumber: secondNumber,
-// },
-// {
-//  equals: equals,
-// },
+
 ];
 
+function actualMath (mathObject){
+    for (let i=0; i<mathObject.length; i++){
+        if (mathObject[i].operatorButton=='+'){
+            let equation=mathObject[i].firstNumber + mathObject[i].secondNumber
+        }
+        if (mathObject[i].operatorButton=='-'){
+            let equation=mathObject[i].firstNumber - mathObject[i].secondNumber
+        }
+        if (mathObject[i].operatorButton=='*'){
+            let equation=mathObject[i].firstNumber * mathObject[i].secondNumber
+        }
+        if (mathObject[i].operatorButton=='/'){
+            let equation=mathObject[i].firstNumber / mathObject[i].secondNumber
+        }
+    }
+    return equation;
+}
 
 app.post('/calculations', (req, res) =>{ 
     console.log('hello from post', req.body);
