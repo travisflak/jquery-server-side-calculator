@@ -6,7 +6,7 @@ function onReady() {
 
 
     $('.operator').on('click', operatorBtnListener);
-    $('#equals').on('click', equalsBtnListener);
+    $('#equals').on('click', postNewCalcData);
     $('#C').on('click', cBtnListener);
 }
 
@@ -17,17 +17,14 @@ function operatorBtnListener(){
  
 }
 
-function equalsBtnListener(){
-    console.log('hello from equals button:', equalsBtnListener);
-   
-}
-
 function cBtnListener(){
     console.log('hello from C button:', cBtnListener);
    
 }
 
 function postNewCalcData() { 
+    console.log('equals button:');
+    
     let firstNumber = $('#firstNumber').val();
     let secondNumber = $('#secondNumber').val();
     $.ajax({
@@ -36,8 +33,7 @@ function postNewCalcData() {
         data:{ 
             firstNumber: firstNumber, 
             secondNumber: secondNumber,
-            operator: operatorButton,
-        }
+            operator: operatorButton}
     }).then(function (response) {
         console.log('respnse', response);
         getNewCalcData();
