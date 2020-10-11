@@ -11,3 +11,10 @@ function onReady() {
     // $('#C').on('click', postPlayerData);
 }
 
+function plusBtnListener(){
+ console.log('hello from plus button:', plusBtnListener);
+ 
+
+}
+
+
