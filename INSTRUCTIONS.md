@@ -10,17 +10,22 @@ You are going to be building a server-side calculator. The logic for the calcula
 
 [x]Create a user interface where the user can input two values (2 input elements) and the select type of mathematical operation. 
 
-[]When the submit (`=` button) is clicked, capture this input, 
+[x]When the submit (`=` button) is clicked, capture this input, 
 [x]bundle it up in an object, 
 [x]and send this object to the server via a POST. 
 
-[]There should also be a 'C' button that will clear the user input fields.
+[x]There should also be a 'C' button that will clear the user input fields.
 
-Build out the server-side logic to compute the numbers as appropriate. The server should be able to handle Addition, Subtraction, Multiplication, and Division. Once the calculation is complete, send back the OK. You should do a GET request after the POST to get the actual calculation.
+[x]Build out the server-side logic to compute the numbers as appropriate. 
+[x]The server should be able to handle Addition, Subtraction, Multiplication, and Division. 
+[x]Once the calculation is complete, send back the OK. 
+[x]You should do a GET request after the POST to get the actual calculation.
 
 ### History
 
-Keep a historical record of all math operations and solutions on the server. Display a list of all previous calculations on the page when it loads using a GET request. Update the list when a new calculation is made.
+[x]Keep a historical record of all math operations and solutions on the server. 
+[x]Display a list of all previous calculations on the page when it loads using a GET request. 
+[x]Update the list when a new calculation is made.
 
 > NOTE: History should exist even after refreshing the page. It's expected that the history will go away after restarting the server. We'll talk about long term data storage next week.
 
