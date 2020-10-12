@@ -2,7 +2,7 @@ $(document).ready(onReady);
 let operatorButton = "";
 
 
-function onReady() {
+function onReady() { //added click listeners for all buttons and the operator buttonss for onReady
 
 
     $('.operator').on('click', operatorBtnListener);
@@ -10,7 +10,7 @@ function onReady() {
     $('#C').on('click', cBtnListener);
 }
 
-function operatorBtnListener(){
+function operatorBtnListener(){ 
  operatorButton = $(this).data('value');
  console.log('operator button:', operatorButton);
  return operatorButton;
@@ -59,7 +59,7 @@ function getNewCalcData() {
     });
 }
 
-function appendToDom(array){
+function appendToDom(array){ //appended the answer to new calculations and targeted the div and ul IDs, and appended them to the DOM
     $('#newCalculation').empty();
     for(let i = 0; i < array.length; i++){
         $('#listOfCalculations').append(`

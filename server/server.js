@@ -10,12 +10,12 @@ const newCalcData = require("./modules/calcData");
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/calculations', (req, res) => {
+app.get('/calculations', (req, res) => {//this will be getting new calculations that have been posted on the server from the user
     res.send(newCalcData);
 
 });
 
-app.post('/calculations', (req, res) => { 
+app.post('/calculations', (req, res) => { //this posts new calculations from the user onto the server
     console.log('hello from post', req.body);
     let calcNew = actualMath(req.body);
     newCalcData.push(calcNew);//pushing this object to newCalcdata array and,
@@ -25,7 +25,7 @@ app.post('/calculations', (req, res) => {
 });
 
 
-function actualMath (mathObject){
+function actualMath (mathObject){//this is the math logic being handeled by the server side
    let equation ;
         if (mathObject.operator=='+'){
             equation=Number(mathObject.firstNumber) + Number(mathObject.secondNumber)
@@ -42,34 +42,6 @@ function actualMath (mathObject){
         mathObject.answer=equation;
     return mathObject;
 }
-// let total = 0;
-
-// function add (){
-//     if (operatorButton=='+'){
-//    total=$('#firstNumber').val() + $('#secondNumber').val();
-//    console.log(total);
-// } 
-
-// function minus (){
-//     if (operatorButton=='-'){
-//    total=$('#firstNumber').val() - $('#secondNumber').val();
-//    console.log(total);
-// }
-
-// function times (){
-//     if (operatorButton=='*'){
-//    total=$('#firstNumber').val() * $('#secondNumber').val();
-//    console.log(total);
-// }
-
-// function divide (){
-//     if (operatorButton=='/'){
-//    total=$('#firstNumber').val() / $('#secondNumber').val();
-//    console.log(total);
-// }}
-
-
-
 
 app.listen(PORT, () => {
     console.log('listening on port', PORT);
