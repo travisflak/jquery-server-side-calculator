@@ -1,4 +1,4 @@
 let newCalcData=[
 
 ];
-module.export=newCalcData;
+module.exports=newCalcData;

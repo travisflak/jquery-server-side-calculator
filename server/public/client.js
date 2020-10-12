@@ -17,8 +17,8 @@ function operatorBtnListener(){
 }
 
 function cBtnListener(){
-    console.log('hello from C button:', cBtnListener);
-   
+    $('#firstNumber').val("");
+    $('#secondNumber').val("");
 }
 
 function postNewCalcData() { 
@@ -46,31 +46,26 @@ function postNewCalcData() {
 function getNewCalcData() { 
     console.log('equals button:');
     
-    let firstNumber = $('#firstNumber').val();
-    let secondNumber = $('#secondNumber').val();
     $.ajax({
         type: 'GET',
-        url: '/calculations',
-        data:{ 
-            firstNumber: firstNumber, 
-            secondNumber: secondNumber,
-            operator: operatorButton}
+        url: '/calculations'
+ 
     }).then(function (response) {
         console.log('respnse', response);
-        appendToDom();
-        $('#firstNumber').val('');
-        $('#secondNumber').val('');
+        appendToDom(response);
+
     }).catch(function(error){
         alert(error);
     });
 }
 
-// function appendToDom(array){
-//     $('#newCalculation').empty();
-
-//     for(let i = 0; i < array.length; i++){
-//         $('#newCalculation').append(`
-//         <li>First Number: ${array[i].firstNumber} && Second Number: ${array[i].secondNumber}</li>
-//         `)
-//     }
-// }
+function appendToDom(array){
+    $('#newCalculation').empty();
+    for(let i = 0; i < array.length; i++){
+        $('#listOfCalculations').append(`
+        <li>${array[i].firstNumber} ${array[i].operator} ${array[i].secondNumber} = ${array[i].answer}</li>
+        `)
+    }
+    $('#newCalculation').append(`<h1>${array[array.length - 1].answer}</h1>
+        `)
+}   
